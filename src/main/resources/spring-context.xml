@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+
+
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <!--+
+        | Tells spring to look for annotations
+        +-->
+    <context:annotation-config/>
+
+    <!--+
+         | Component scan base package for the common service stub library.
+         +-->
+    <context:component-scan base-package="nl.ivonet.sample.webapp"/>
+
+    <!--+
+         | PropertyPlaceHolder for using properties from application.properties within the application context.
+         +-->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--+
+        | Message source for this context, loaded from localized "messages_xx" files.
+        | Could also reside in the root application context, as it is generic,
+        | but is currently just used within the web tier.
+        +-->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
+    <!--+
+        | freemarker config.
+        +-->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/views/freemarker/"/>
+    </bean>
+
+    <!--+
+        | Enables the application.properties to be injected in classed that want direct access to it.
+        +-->
+    <bean id="pathProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:application.properties"/>
+    </bean>
+
+    <!--+
+        | View resolvers can also be configured with ResourceBundles or XML files. If you need
+        | different view resolving based on Locale, you have to use the resource bundle resolver.
+        +-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="requestContextAttribute" value="rc"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+    </bean>
+
+    <!--+
+        | The catchall exception mapping.
+        | When the application does not catch the exception this
+        +-->
+    <bean id="exceptionMapping"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error/error"/>
+        <property name="exceptionAttribute" value="exception"/>
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error/error</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="copyright" class="java.lang.String">
+        <constructor-arg index="0" value="${copyright}"/>
+    </bean>
+</beans>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="TheAppender" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value=".logs/speeltuin.log"/>
+        <param name="MaxFileSize" value="25MB"/>
+        <param name="MaxBackupIndex" value="15"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{dd-MM-yyyy HH:mm:ss,SSS}] %x %-10.10t %-5p %c- %m%n"/>
+        </layout>
+    </appender>
+
+
+    <logger name="org.springframework">
+        <level value="info"/>
+    </logger>
+
+    <logger name="org.freemarker">
+        <level value="info"/>
+    </logger>
+
+    <logger name="org.apache">
+        <level value="info"/>
+    </logger>
+
+    <logger name="java.sql">
+        <level value="info"/>
+    </logger>
+
+    <logger name="nl.ivonet.sample.webapp">
+        <level value="trace"/>
+        <appender-ref ref="TheAppender"/>
+        <!--<appender-ref ref="Console"/>-->
+    </logger>
+
+    <root>
+        <level value="info"/>
+        <appender-ref ref="Console"/>
+    </root>
+
+</log4j:configuration>
