@@ -1,0 +1,19 @@
+prerequisites:
+
+- maven 3+
+- java 1.6+
+
+Instructions:
+
+To run this "speeltuin" spring web mvc play aplication "as is" you can run
+
+mvn jetty:run
+
+then goto:
+
+http://localhost:8080/speeltuin
+
+Have fun.
+
+Ivo.
+This file was modified by IntelliJ IDEA (Leda) IU-123.139 for binding GitHub repository
