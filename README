@@ -1,9 +1,9 @@
-prerequisites:
+# prerequisites #
 
-- maven 3+
-- java 1.6+
+* maven 3+
+* java 1.6+
 
-Instructions:
+# Instructions #
 
 To run this "speeltuin" spring web mvc play aplication "as is" you can run
 
@@ -16,4 +16,3 @@ http://localhost:8080/speeltuin
 Have fun.
 
 Ivo.
-This file was modified by IntelliJ IDEA (Leda) IU-123.139 for binding GitHub repository
