@@ -22,17 +22,17 @@ public class AppControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        modelMapMock = createMock(Model.class);
+        this.modelMapMock = createMock(Model.class);
 
-        controller = new AppController();
+        this.controller = new AppController();
     }
 
     private void replayMocks() {
-        replay(modelMapMock);
+        replay(this.modelMapMock);
     }
 
     private void verifyMocks() {
-        verify(modelMapMock);
+        verify(this.modelMapMock);
     }
 
     /**
@@ -40,10 +40,10 @@ public class AppControllerTest {
      */
     @Test
     public void testApp() {
-        expect(modelMapMock.addAttribute(isA(Password.class))).andReturn(modelMapMock);
-        expect(modelMapMock.addAttribute("copyright", null)).andReturn(modelMapMock);
+        expect(this.modelMapMock.addAttribute(isA(Password.class))).andReturn(this.modelMapMock);
+        expect(this.modelMapMock.addAttribute("copyright", null)).andReturn(this.modelMapMock);
         replayMocks();
-        assertEquals("index", controller.index(modelMapMock));
+        assertEquals("index", this.controller.index(this.modelMapMock));
         verifyMocks();
     }
 

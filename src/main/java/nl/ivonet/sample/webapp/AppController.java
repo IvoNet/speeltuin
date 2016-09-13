@@ -23,7 +23,7 @@ public class AppController {
     @RequestMapping(value = "/index.htm", method = RequestMethod.GET)
     public String index(final Model model) {
         model.addAttribute(new Password());
-        model.addAttribute("copyright", copyright);
+        model.addAttribute("copyright", this.copyright);
         return "index";
     }
 
