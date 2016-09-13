@@ -4,13 +4,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Hello World</title>
+    <title>Hello, World</title>
 </head>
 <body>
-<p>Hello world!</p>
+<p>Hello, world!</p>
 
 <p>
     This is a fully configured springframework mvc application that uses Freemarker as its templating engine.
+</p>
+
+<p>
+    Make sure to look at all the code in this project and see if you understand how it works.
+    When you crack the password :-) you will get some answers.</br>
+    Please read the tips carefully and try to answer the questions in them for yourself.
+    If you do this you will probably learn a lot.
 </p>
 
 <h2>Play Tips:</h2>
