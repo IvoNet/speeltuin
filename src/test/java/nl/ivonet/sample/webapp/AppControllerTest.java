@@ -1,11 +1,16 @@
 package nl.ivonet.sample.webapp;
 
+import nl.ivonet.sample.webapp.view.Password;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.ui.Model;
 
-import static org.easymock.EasyMock.*;
-import static org.junit.Assert.*;
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.isA;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test for simple AppController.
@@ -35,6 +40,8 @@ public class AppControllerTest {
      */
     @Test
     public void testApp() {
+        expect(modelMapMock.addAttribute(isA(Password.class))).andReturn(modelMapMock);
+        expect(modelMapMock.addAttribute("copyright", null)).andReturn(modelMapMock);
         replayMocks();
         assertEquals("index", controller.index(modelMapMock));
         verifyMocks();
